@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todoapp</title>
+</head>
+<body>
+    <h1>To Do list</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Email</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task, email, priority in items %}
+        <tr>
+            <td>{{ task }}</td>
+            <td>{{ email }}</td>
+            <td>{{ priority }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h1>Add a new item</h1>
+    <form action="/submit" method="POST">
+        <label for="task">Task:</label>
+        <input type="text" id="task" name="task" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="priority">Priority:</label>
+        <input type="text" id="priority" name="priority" required>
+<!--        <select id="priority" name="priority">-->
+<!--            <option value="Low">Low</option>-->
+<!--            <option value="Medium">Medium</option>-->
+<!--            <option value="High">High</option>-->
+<!--            </select>-->
+        <br>
+        <input type="submit" value="Add To Do Item">
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+    </form>
+    <form action="/save" method="post"> <input type="submit" value="Save" name="save"> </form>
+    <form action="/clear" method="post">
+    <input type="submit" value="Clear">
+</form>
+</body>
+</html>
+
+
